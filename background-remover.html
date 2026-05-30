@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quitar Fondo de Imagen Gratis — Priquer</title>
+  <meta name="description" content="Quita el fondo de cualquier imagen gratis y al instante. Sin registro, sin marcas de agua. Resultado en PNG transparente de alta calidad." />
+  <meta name="keywords" content="quitar fondo imagen gratis, eliminar fondo foto, imagen fondo transparente, png fondo transparente, remove background gratis" />
+  <link rel="canonical" href="https://priquer.com/tools/background-remover" />
+  <meta property="og:title" content="Quitar Fondo de Imagen Gratis — Priquer" />
+  <meta property="og:description" content="Elimina el fondo de tus imágenes al instante, gratis y sin registro." />
+
+  <!-- Google Analytics placeholder -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+    gtag('event', 'tool_view', { tool_name: 'background_remover' });
+  </script>
+  -->
+
+  <!-- AdSense placeholder -->
+  <!--
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+  -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/tool.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="../index.html" class="logo">
+      <span class="logo-mark">P</span>
+      <span class="logo-text">priquer</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html#herramientas">Herramientas</a>
+      <a href="../index.html#como-funciona">Cómo funciona</a>
+    </div>
+    <button class="nav-cta">100% Gratis</button>
+  </nav>
+
+  <main class="tool-page">
+
+    <!-- TOOL HEADER -->
+    <div class="tool-header">
+      <div class="tool-header-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="grid-overlay"></div>
+      </div>
+      <div class="container">
+        <a href="../index.html" class="breadcrumb">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 11L5 7l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Todas las herramientas
+        </a>
+        <div class="tool-header-content">
+          <div class="tool-header-icon">
+            <svg width="32" height="32" viewBox="0 0 28 28" fill="none">
+              <rect x="2" y="2" width="24" height="24" rx="4" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 2"/>
+              <circle cx="10" cy="10" r="3" fill="currentColor" opacity="0.4"/>
+              <path d="M6 22l5-6 4 4 3-3 4 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <h1>Quitar fondo de imagen</h1>
+            <p>Elimina el fondo de cualquier imagen al instante. Gratis, sin registro, sin límites.</p>
+          </div>
+        </div>
+        <div class="tool-features">
+          <span class="feature-tag">✓ PNG transparente</span>
+          <span class="feature-tag">✓ Alta calidad</span>
+          <span class="feature-tag">✓ Sin límites</span>
+          <span class="feature-tag">✓ Privado — procesa en tu navegador</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- AD BANNER TOP (activar con AdSense) -->
+    <!--
+    <div class="container">
+      <div class="ad-banner">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+    </div>
+    -->
+
+    <div class="container tool-container">
+
+      <!-- UPLOAD ZONE -->
+      <div class="upload-zone" id="uploadZone">
+        <input type="file" id="fileInput" accept="image/*" multiple style="display:none" />
+        <div class="upload-idle" id="uploadIdle">
+          <div class="upload-icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <rect x="4" y="4" width="40" height="40" rx="8" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.4"/>
+              <path d="M24 32V20M18 26l6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Arrastra tu imagen aquí</h3>
+          <p>o haz clic para seleccionar desde tu dispositivo</p>
+          <button class="btn-upload" onclick="document.getElementById('fileInput').click()">
+            Seleccionar imagen
+          </button>
+          <p class="upload-note">JPG, PNG, WEBP — Máx. 10MB</p>
+        </div>
+      </div>
+
+      <!-- PROCESSING STATE -->
+      <div class="processing-zone" id="processingZone" style="display:none">
+        <div class="processing-animation">
+          <div class="process-ring"></div>
+          <div class="process-ring ring-2"></div>
+          <div class="process-ring ring-3"></div>
+          <div class="process-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <path d="M14 3C8 3 3 8 3 14s5 11 11 11 11-5 11-11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+        <h3 id="processingTitle">Procesando imagen...</h3>
+        <p id="processingMsg">La IA está eliminando el fondo. Esto puede tomar unos segundos.</p>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <p class="processing-note">Tu imagen se procesa completamente en tu navegador — nunca se sube a ningún servidor.</p>
+      </div>
+
+      <!-- RESULT STATE -->
+      <div class="result-zone" id="resultZone" style="display:none">
+
+        <div class="result-toolbar">
+          <h3>¡Listo! Tu imagen sin fondo</h3>
+          <div class="result-actions">
+            <button class="btn-secondary" id="btnNewImage" onclick="resetTool()">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8A6 6 0 0114 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 5l2 3-3 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Nueva imagen
+            </button>
+            <button class="btn-download" id="btnDownload">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v7M5 8l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 13h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              Descargar PNG
+            </button>
+          </div>
+        </div>
+
+        <div class="result-preview">
+          <div class="result-panel">
+            <p class="panel-label">Original</p>
+            <div class="result-img-wrap">
+              <img id="originalImg" alt="Imagen original" />
+            </div>
+          </div>
+          <div class="result-divider">
+            <div class="divider-line"></div>
+            <span class="divider-icon">→</span>
+            <div class="divider-line"></div>
+          </div>
+          <div class="result-panel">
+            <p class="panel-label">Sin fondo</p>
+            <div class="result-img-wrap transparent">
+              <img id="resultImg" alt="Imagen sin fondo" />
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-options">
+          <p class="bg-options-label">Vista previa con fondo:</p>
+          <div class="bg-swatches">
+            <button class="swatch active" data-bg="transparent" title="Transparente">
+              <div class="checker-sm"></div>
+            </button>
+            <button class="swatch" data-bg="#ffffff" style="background:#ffffff" title="Blanco"></button>
+            <button class="swatch" data-bg="#000000" style="background:#000000" title="Negro"></button>
+            <button class="swatch" data-bg="#ff6b6b" style="background:#ff6b6b" title="Rojo"></button>
+            <button class="swatch" data-bg="#4ecdc4" style="background:#4ecdc4" title="Verde"></button>
+            <button class="swatch" data-bg="#45b7d1" style="background:#45b7d1" title="Azul"></button>
+            <button class="swatch" data-bg="#f7dc6f" style="background:#f7dc6f" title="Amarillo"></button>
+          </div>
+        </div>
+
+        <!-- AD SLOT (activar con AdSense) -->
+        <!--
+        <div class="ad-slot-result">
+          <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="rectangle"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+        -->
+
+      </div>
+
+    </div>
+
+    <!-- MULTI IMAGE QUEUE -->
+    <div class="container" id="queueContainer" style="display:none">
+      <h3 class="queue-title">Cola de imágenes</h3>
+      <div class="image-queue" id="imageQueue"></div>
+    </div>
+
+    <!-- HOW TO USE -->
+    <section class="tool-info-section">
+      <div class="container">
+        <div class="info-grid">
+          <div class="info-card">
+            <div class="info-num">01</div>
+            <h4>Sube tu imagen</h4>
+            <p>Arrastra o selecciona cualquier foto en formato JPG, PNG o WEBP.</p>
+          </div>
+          <div class="info-card">
+            <div class="info-num">02</div>
+            <h4>IA elimina el fondo</h4>
+            <p>El modelo de inteligencia artificial detecta y elimina el fondo automáticamente.</p>
+          </div>
+          <div class="info-card">
+            <div class="info-num">03</div>
+            <h4>Descarga tu PNG</h4>
+            <p>Obtén tu imagen con fondo transparente en alta calidad, lista para usar.</p>
+          </div>
+        </div>
+        <div class="seo-content">
+          <h2>¿Por qué usar Priquer para quitar fondos?</h2>
+          <p>La mayoría de las herramientas para quitar fondos de imágenes son de pago o tienen límites estrictos. En Priquer puedes eliminar el fondo de tus imágenes de forma <strong>completamente gratuita</strong>, sin registrarte y sin marcas de agua.</p>
+          <p>A diferencia de otras herramientas, el procesamiento ocurre directamente en tu navegador usando inteligencia artificial. Esto significa que tus imágenes nunca se suben a ningún servidor — tu privacidad está 100% protegida.</p>
+          <h3>¿Para qué sirve quitar el fondo de una imagen?</h3>
+          <ul>
+            <li>Fotos de productos para tiendas en línea</li>
+            <li>Fotos de perfil profesionales</li>
+            <li>Diseños para redes sociales</li>
+            <li>Presentaciones y materiales de marketing</li>
+            <li>Stickers y elementos gráficos</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top:none; padding-top:0">
+        <a href="../index.html" class="logo">
+          <span class="logo-mark">P</span>
+          <span class="logo-text">priquer</span>
+        </a>
+        <p style="color:var(--text-3); font-size:13px;">© 2025 Priquer · <a href="../privacidad.html" style="color:var(--text-3)">Privacidad</a> · <a href="../terminos.html" style="color:var(--text-3)">Términos</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Background removal library - runs entirely in browser -->
+  <script src="https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.4.5/dist/browser.js"></script>
+  <script src="../js/background-remover.js"></script>
+</body>
+</html>

@@ -68,7 +68,25 @@ async function fetchCounters() {
 
   const tools = [...new Set(Array.from(els).map(el => el.dataset.counter))];
 
+  if (tools.includes('total')) {
+    try {
+      const res = await fetch('/api/counter');
+      if (res.ok) {
+        const all = await res.json();
+        const totalAll = Object.values(all).reduce((s, d) => s + (d.all || 0), 0);
+        const key = getMonthKey();
+        const totalMonth = Object.values(all).reduce((s, d) => s + (d.monthly?.[key] || 0), 0);
+
+        document.querySelectorAll('[data-counter="total"]').forEach(el => {
+          if (el.dataset.type === 'all') el.textContent = totalAll.toLocaleString();
+          else if (el.dataset.type === 'month') el.textContent = totalMonth.toLocaleString();
+        });
+      }
+    } catch (_) {}
+  }
+
   for (const tool of tools) {
+    if (tool === 'total') continue;
     try {
       const res = await fetch(`/api/counter/${tool}`);
       if (!res.ok) continue;

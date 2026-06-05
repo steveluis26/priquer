@@ -1,6 +1,15 @@
 let resultBlob = null;
 let originalFileName = '';
 
+let imglyRemoveBackground = null;
+async function getImgly() {
+  if (!imglyRemoveBackground) {
+    const mod = await import('https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.7.0/dist/index.mjs');
+    imglyRemoveBackground = mod.removeBackground;
+  }
+  return imglyRemoveBackground;
+}
+
 const uploadZone   = document.getElementById('uploadZone');
 const processingZone = document.getElementById('processingZone');
 const resultZone   = document.getElementById('resultZone');
@@ -78,7 +87,8 @@ async function processImage(file) {
   document.getElementById('processingMsg').textContent = 'La IA está procesando tu imagen. Esto puede tomar entre 5 y 20 segundos.';
 
   try {
-    const blob = await backgroundRemoval.removeBackground(file, {
+    const removeBackground = await getImgly();
+    const blob = await removeBackground(file, {
       output: { format: 'image/png', quality: 1 },
       progress: (key, current, total) => {
         if (key === 'compute:inference') {
@@ -202,7 +212,8 @@ async function processMultiple(files) {
     statusEl.className = 'queue-item-status status-processing';
 
     try {
-      const blob = await backgroundRemoval.removeBackground(file, {
+      const removeBackground = await getImgly();
+      const blob = await removeBackground(file, {
         output: { format: 'image/png', quality: 1 }
       });
 

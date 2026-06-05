@@ -38,6 +38,7 @@ async function handleFile(file) {
   document.getElementById('processingMsg').textContent = 'Extrayendo contenido del documento.';
 
   try {
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
     const arrayBuffer = await file.arrayBuffer();
     const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
     const totalPages = pdf.numPages;
@@ -96,10 +97,6 @@ async function handleFile(file) {
       const page = pageTexts[i];
       if (page.content) {
         children.push(
-          new Paragraph({
-            children: [new TextRun({ text: `Página ${i + 1}`, bold: true, size: 28 })],
-            spacing: { before: 400, after: 200 }
-          }),
           new Paragraph({
             children: [new TextRun(page.content)],
             spacing: { after: 200 }

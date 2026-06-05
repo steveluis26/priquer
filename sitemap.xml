@@ -43,13 +43,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://priquer.com/privacidad</loc>
+    <loc>https://priquer.com/legal/acerca</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://priquer.com/legal/privacidad</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://priquer.com/terminos</loc>
+    <loc>https://priquer.com/legal/terminos</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>

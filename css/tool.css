@@ -628,3 +628,90 @@
   .result-toolbar { flex-direction: column; align-items: flex-start; }
   .upload-zone { min-height: 240px; }
 }
+
+/* QUALITY PICKER (compressor) */
+.quality-picker { margin-top: 16px; }
+.quality-option { cursor: pointer; }
+.quality-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 500;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-2);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.quality-option.active .quality-btn {
+  background: var(--green-dark);
+  border-color: var(--green);
+  color: var(--green);
+}
+@media (hover: hover) {
+  .quality-option:not(.active) .quality-btn:hover {
+    border-color: var(--border-hover);
+    color: var(--text);
+  }
+}
+
+/* CONVERTER CONTROLS (image converter) */
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.control-group label {
+  font-size: 14px;
+  color: var(--text-2);
+  white-space: nowrap;
+}
+.format-select {
+  padding: 10px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-2);
+  color: var(--text-1);
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+.format-select:focus {
+  outline: none;
+  border-color: var(--green);
+}
+
+/* QR GENERATOR */
+.qr-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+.qr-input-section label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.qr-canvas-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  background: var(--bg-2);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 20px;
+}
+.qr-option label {
+  display: block;
+  font-size: 13px;
+  color: var(--text-2);
+  margin-bottom: 4px;
+}
+@media (max-width: 640px) {
+  .qr-body { grid-template-columns: 1fr; }
+}

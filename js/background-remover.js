@@ -78,7 +78,7 @@ async function processImage(file) {
   document.getElementById('processingMsg').textContent = 'La IA está procesando tu imagen. Esto puede tomar entre 5 y 20 segundos.';
 
   try {
-    const blob = await imglyRemoveBackground(file, {
+    const blob = await backgroundRemoval(file, {
       output: { format: 'image/png', quality: 1 },
       progress: (key, current, total) => {
         if (key === 'compute:inference') {
@@ -202,7 +202,7 @@ async function processMultiple(files) {
     statusEl.className = 'queue-item-status status-processing';
 
     try {
-      const blob = await imglyRemoveBackground(file, {
+      const blob = await backgroundRemoval(file, {
         output: { format: 'image/png', quality: 1 }
       });
 

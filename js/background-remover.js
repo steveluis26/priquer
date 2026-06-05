@@ -4,7 +4,7 @@ let originalFileName = '';
 let imglyRemoveBackground = null;
 async function getImgly() {
   if (!imglyRemoveBackground) {
-    const mod = await import('https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.7.0/dist/index.mjs');
+    const mod = await import('https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.4.5/dist/index.mjs');
     imglyRemoveBackground = mod.removeBackground;
   }
   return imglyRemoveBackground;

@@ -7,7 +7,6 @@ const resultZone     = document.getElementById('resultZone');
 const fileInput      = document.getElementById('fileInput');
 const progressFill   = document.getElementById('progressFill');
 
-// Drag & drop + iOS-friendly file input
 uploadZone.addEventListener('dragover', (e) => { e.preventDefault(); uploadZone.classList.add('drag-over'); });
 uploadZone.addEventListener('dragleave', () => { uploadZone.classList.remove('drag-over'); });
 uploadZone.addEventListener('drop', (e) => {
@@ -24,6 +23,51 @@ fileInput.addEventListener('change', (e) => {
 });
 
 document.querySelector('.btn-upload')?.addEventListener('click', (e) => { e.stopPropagation(); fileInput.click(); });
+
+function ocrToParagraphs(text) {
+  if (!text) return [{ type: 'paragraph', runs: [{ text: '', bold: false, italic: false }] }];
+  const lines = text.split('\n').filter(l => l.trim());
+  if (lines.length === 0) return [{ type: 'paragraph', runs: [{ text: '', bold: false, italic: false }] }];
+  return lines.map(line => ({
+    type: 'paragraph',
+    runs: [{ text: line, bold: false, italic: false, size: 22 }]
+  }));
+}
+
+function layoutToDocx(paragraphs) {
+  const children = [];
+  for (const p of paragraphs) {
+    const docxRuns = p.runs.map(r => new docx.TextRun({
+      text: r.text,
+      bold: r.bold,
+      italic: r.italic,
+      size: r.size || 22,
+      font: r.font || undefined,
+    }));
+
+    if (p.type === 'heading') {
+      const levelMap = { 1: docx.HeadingLevel.HEADING_1, 2: docx.HeadingLevel.HEADING_2, 3: docx.HeadingLevel.HEADING_3 };
+      children.push(new docx.Paragraph({
+        heading: levelMap[p.level] || docx.HeadingLevel.HEADING_2,
+        children: docxRuns,
+        spacing: { before: 240, after: 120 },
+      }));
+    } else if (p.type === 'list') {
+      const prefix = p.listType === 'bullet' ? '• ' : '';
+      children.push(new docx.Paragraph({
+        children: [new docx.TextRun({ text: prefix + p.runs.map(r => r.text).join(''), size: 22 })],
+        spacing: { after: 60 },
+        indent: { left: 720, hanging: p.listType === 'bullet' ? 360 : 0 },
+      }));
+    } else {
+      children.push(new docx.Paragraph({
+        children: docxRuns,
+        spacing: { after: 120 },
+      }));
+    }
+  }
+  return children;
+}
 
 async function handleFile(file) {
   if (file.size > 50 * 1024 * 1024) { alert('El archivo es muy grande. Máximo 50MB.'); return; }
@@ -48,25 +92,27 @@ async function handleFile(file) {
     document.getElementById('processingTitle').textContent = `Convirtiendo página 1 de ${totalPages}...`;
     progressFill.style.width = '0%';
 
-    const pageTexts = [];
+    const pages = [];
 
     for (let i = 1; i <= totalPages; i++) {
       document.getElementById('processingTitle').textContent = `Procesando página ${i} de ${totalPages}...`;
 
       const page = await pdf.getPage(i);
+      const viewport = page.getViewport({ scale: 1 });
+      const pageHeight = viewport.height;
       const textContent = await page.getTextContent();
       const text = textContent.items.map(item => item.str).join(' ').trim();
 
       if (text.length > 30) {
-        pageTexts.push({ type: 'text', content: text });
+        pages.push(pdfLayout.parseLayout(textContent, pageHeight));
       } else {
         document.getElementById('processingMsg').textContent = `Página ${i} sin texto extraíble. Aplicando OCR...`;
-        const viewport = page.getViewport({ scale: 2.0 });
+        const renderViewport = page.getViewport({ scale: 2.0 });
         const canvas = document.createElement('canvas');
-        canvas.width = viewport.width;
-        canvas.height = viewport.height;
+        canvas.width = renderViewport.width;
+        canvas.height = renderViewport.height;
         const ctx = canvas.getContext('2d');
-        await page.render({ canvasContext: ctx, viewport }).promise;
+        await page.render({ canvasContext: ctx, viewport: renderViewport }).promise;
 
         try {
           const { data } = await Tesseract.recognize(canvas, 'spa+eng', {
@@ -77,10 +123,10 @@ async function handleFile(file) {
               }
             }
           });
-          pageTexts.push({ type: 'ocr', content: data.text.trim() || '(sin texto reconocido)' });
+          pages.push(ocrToParagraphs(data.text.trim()));
         } catch (ocrErr) {
           console.error('OCR error en página', i, ocrErr);
-          pageTexts.push({ type: 'ocr', content: '' });
+          pages.push(ocrToParagraphs(''));
         }
       }
 
@@ -88,34 +134,32 @@ async function handleFile(file) {
       progressFill.style.width = overallProgress + '%';
     }
 
-    // Build DOCX
     document.getElementById('processingTitle').textContent = 'Generando documento Word...';
     document.getElementById('processingMsg').textContent = 'Esto toma solo unos segundos.';
     progressFill.style.width = '90%';
 
-    const { Document, Packer, Paragraph, TextRun, HeadingLevel } = docx;
-
     const children = [];
 
-    for (let i = 0; i < pageTexts.length; i++) {
-      const page = pageTexts[i];
-      if (page.content) {
-        children.push(
-          new Paragraph({
-            children: [new TextRun(page.content)],
-            spacing: { after: 200 }
-          })
-        );
+    for (let i = 0; i < pages.length; i++) {
+      if (i > 0) {
+        children.push(new docx.Paragraph({
+          pageBreakBefore: true,
+          children: [new docx.TextRun({ text: '', size: 1 })],
+        }));
+      }
+      const pageChildren = layoutToDocx(pages[i]);
+      for (const child of pageChildren) {
+        children.push(child);
       }
     }
 
-    const doc = new Document({
+    const doc = new docx.Document({
       title: originalFileName,
       description: 'Convertido desde PDF por Pq',
-      sections: [{ children }]
+      sections: [{ children }],
     });
 
-    const docBlob = await Packer.toBlob(doc);
+    const docBlob = await docx.Packer.toBlob(doc);
     resultDocBlob = docBlob;
 
     progressFill.style.width = '100%';

@@ -90,7 +90,6 @@ async function processImage(file) {
     const removeBackground = await getImgly();
     const blob = await removeBackground(file, {
       output: { format: 'image/png', quality: 1 },
-      publicPath: 'https://staticimgly.com/@imgly/background-removal-data/1.4.5/dist/',
       progress: (key, current, total) => {
         if (key === 'compute:inference') {
           const pct = Math.round((current / total) * 100);
@@ -215,8 +214,7 @@ async function processMultiple(files) {
     try {
       const removeBackground = await getImgly();
       const blob = await removeBackground(file, {
-        output: { format: 'image/png', quality: 1 },
-        publicPath: 'https://staticimgly.com/@imgly/background-removal-data/1.4.5/dist/'
+        output: { format: 'image/png', quality: 1 }
       });
 
       statusEl.textContent = '✓ Listo';

@@ -3,15 +3,86 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quitar Fondo de Imagen Gratis — Priquer</title>
-  <meta name="description" content="Quita el fondo de cualquier imagen gratis y al instante. Sin registro, sin marcas de agua. Resultado en PNG transparente de alta calidad." />
+  <title>Quitar Fondo de Imagen Gratis — Pq</title>
+  <meta name="description" content="Quita el fondo de cualquier imagen gratis y al instante. Sin registro, sin marcas de agua. Resultado en PNG transparente de alta calidad. Procesamiento en tu navegador." />
   <meta name="keywords" content="quitar fondo imagen gratis, eliminar fondo foto, imagen fondo transparente, png fondo transparente, remove background gratis" />
   <link rel="canonical" href="https://priquer.com/tools/background-remover" />
-  <meta property="og:title" content="Quitar Fondo de Imagen Gratis — Priquer" />
-  <meta property="og:description" content="Elimina el fondo de tus imágenes al instante, gratis y sin registro." />
+  <meta property="og:title" content="Quitar Fondo de Imagen Gratis — Pq" />
+  <meta property="og:description" content="Elimina el fondo de tus imágenes al instante. Gratis, sin registro y sin marcas de agua." />
+  <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Google Analytics placeholder -->
-  <!--
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Quitar fondo de imagen",
+    "url": "https://priquer.com/tools/background-remover",
+    "description": "Elimina el fondo de cualquier imagen al instante. Obtén PNG con transparencia.",
+    "applicationCategory": "Multimedia",
+    "operatingSystem": "Browser",
+    "browserRequirements": "Requires JavaScript",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://priquer.com" },
+      { "@type": "ListItem", "position": 2, "name": "Quitar fondo de imagen", "item": "https://priquer.com/tools/background-remover" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Cómo quitar el fondo de una imagen",
+    "step": [
+      { "@type": "HowToStep", "position": 1, "name": "Sube tu imagen", "text": "Arrastra o selecciona tu imagen en formato JPG, PNG o WEBP." },
+      { "@type": "HowToStep", "position": 2, "name": "Eliminación automática", "text": "La IA procesa la imagen y elimina el fondo automáticamente en tu navegador." },
+      { "@type": "HowToStep", "position": 3, "name": "Descarga tu PNG", "text": "Obtén tu imagen sin fondo en formato PNG con transparencia." }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Es gratis quitar el fondo de imágenes en Pq?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, es completamente gratis. Sin límites, sin marcas de agua y sin registro." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Mis imágenes se suben a algún servidor?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Todo el procesamiento ocurre en tu navegador. Tus imágenes nunca salen de tu dispositivo." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué formatos de imagen soporta?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Soporta JPG, PNG y WEBP. El resultado se descarga en PNG con transparencia." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Hay límite de uso?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Puedes usar la herramienta todas las veces que necesites, sin límites." }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -20,9 +91,8 @@
     gtag('config', 'G-XXXXXXXXXX');
     gtag('event', 'tool_view', { tool_name: 'background_remover' });
   </script>
-  -->
 
-  <!-- AdSense placeholder -->
+  <!-- Google AdSense (activar cuando tengas aprobación) -->
   <!--
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
   -->
@@ -32,21 +102,23 @@
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/styles.css" />
   <link rel="stylesheet" href="../css/tool.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 font-family=%22Syne,system-ui,sans-serif%22 font-weight=%22800%22 fill=%22%2322c98a%22>Pq</text></svg>" />
 </head>
 <body>
 
   <!-- NAVBAR -->
   <nav class="navbar">
-    <a href="../index.html" class="logo">
-      <span class="logo-mark">P</span>
-      <span class="logo-text">priquer</span>
-    </a>
+    <a href="../index.html" class="logo-pq">Pq</a>
+    <button class="nav-hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
     <div class="nav-links">
       <a href="../index.html#herramientas">Herramientas</a>
       <a href="../index.html#como-funciona">Cómo funciona</a>
+      <a href="../index.html" class="nav-cta">100% Gratis</a>
     </div>
-    <button class="nav-cta">100% Gratis</button>
   </nav>
+  <div class="nav-overlay"></div>
 
   <main class="tool-page">
 
@@ -84,21 +156,18 @@
       </div>
     </div>
 
-    <!-- AD BANNER TOP (activar con AdSense) -->
-    <!--
+    <!-- AD SLOT 1 -->
     <div class="container">
-      <div class="ad-banner">
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      <div class="ad-banner" style="min-height:90px;">
+        <!-- Inserta código de AdSense aquí -->
       </div>
     </div>
-    -->
 
     <div class="container tool-container">
 
       <!-- UPLOAD ZONE -->
       <div class="upload-zone" id="uploadZone">
-        <input type="file" id="fileInput" accept="image/*" multiple style="display:none" />
+        <input type="file" id="fileInput" accept="image/*" class="file-input-overlay" />
         <div class="upload-idle" id="uploadIdle">
           <div class="upload-icon">
             <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
@@ -106,29 +175,31 @@
               <path d="M24 32V20M18 26l6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
-          <h3>Arrastra tu imagen aquí</h3>
-          <p>o haz clic para seleccionar desde tu dispositivo</p>
-          <button class="btn-upload" onclick="document.getElementById('fileInput').click()">
-            Seleccionar imagen
-          </button>
-          <p class="upload-note">JPG, PNG, WEBP — Máx. 10MB</p>
+          <h3>Sube tu imagen aquí</h3>
+          <p id="uploadHint">o haz clic para seleccionar desde tu dispositivo</p>
+          <button class="btn-upload" type="button">Seleccionar imagen</button>
+          <p class="upload-note">JPG, PNG, WEBP — Máx. 20MB</p>
         </div>
       </div>
 
-      <!-- PROCESSING STATE -->
+      <!-- PROCESSING STATE (P→q loader) -->
       <div class="processing-zone" id="processingZone" style="display:none">
-        <div class="processing-animation">
-          <div class="process-ring"></div>
-          <div class="process-ring ring-2"></div>
-          <div class="process-ring ring-3"></div>
-          <div class="process-icon">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-              <path d="M14 3C8 3 3 8 3 14s5 11 11 11 11-5 11-11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
+        <div class="pq-loader-wrap">
+          <div class="pq-loader">
+            <div class="pq-flipper">
+              <div class="pq-front">
+                <div class="glow-ring"></div>
+                P
+              </div>
+              <div class="pq-back">
+                <div class="glow-ring"></div>
+                q
+              </div>
+            </div>
           </div>
         </div>
-        <h3 id="processingTitle">Procesando imagen...</h3>
-        <p id="processingMsg">La IA está eliminando el fondo. Esto puede tomar unos segundos.</p>
+        <h3 id="processingTitle">Eliminando fondo...</h3>
+        <p id="processingMsg">La IA está procesando tu imagen. Esto puede tomar unos segundos.</p>
         <div class="progress-bar">
           <div class="progress-fill" id="progressFill"></div>
         </div>
@@ -141,7 +212,7 @@
         <div class="result-toolbar">
           <h3>¡Listo! Tu imagen sin fondo</h3>
           <div class="result-actions">
-            <button class="btn-secondary" id="btnNewImage" onclick="resetTool()">
+            <button class="btn-secondary" id="btnNewImage">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8A6 6 0 0114 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 5l2 3-3 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               Nueva imagen
             </button>
@@ -166,7 +237,7 @@
           </div>
           <div class="result-panel">
             <p class="panel-label">Sin fondo</p>
-            <div class="result-img-wrap transparent">
+            <div class="result-img-wrap transparent" id="resultImgWrap">
               <img id="resultImg" alt="Imagen sin fondo" />
             </div>
           </div>
@@ -187,13 +258,10 @@
           </div>
         </div>
 
-        <!-- AD SLOT (activar con AdSense) -->
-        <!--
-        <div class="ad-slot-result">
-          <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="rectangle"></ins>
-          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        <!-- AD SLOT 2 -->
+        <div class="ad-slot" style="min-height:250px;">
+          <!-- Inserta código de AdSense aquí -->
         </div>
-        -->
 
       </div>
 
@@ -225,10 +293,17 @@
             <p>Obtén tu imagen con fondo transparente en alta calidad, lista para usar.</p>
           </div>
         </div>
+
+        <!-- AD SLOT 3 -->
+        <div class="ad-banner" style="min-height:90px;">
+          <!-- Inserta código de AdSense aquí -->
+        </div>
+
         <div class="seo-content">
-          <h2>¿Por qué usar Priquer para quitar fondos?</h2>
-          <p>La mayoría de las herramientas para quitar fondos de imágenes son de pago o tienen límites estrictos. En Priquer puedes eliminar el fondo de tus imágenes de forma <strong>completamente gratuita</strong>, sin registrarte y sin marcas de agua.</p>
+          <h2>¿Por qué usar Pq para quitar fondos?</h2>
+          <p>La mayoría de las herramientas para quitar fondos de imágenes son de pago o tienen límites estrictos. En Pq puedes eliminar el fondo de tus imágenes de forma <strong>completamente gratuita</strong>, sin registrarte y sin marcas de agua.</p>
           <p>A diferencia de otras herramientas, el procesamiento ocurre directamente en tu navegador usando inteligencia artificial. Esto significa que tus imágenes nunca se suben a ningún servidor — tu privacidad está 100% protegida.</p>
+
           <h3>¿Para qué sirve quitar el fondo de una imagen?</h3>
           <ul>
             <li>Fotos de productos para tiendas en línea</li>
@@ -238,6 +313,27 @@
             <li>Stickers y elementos gráficos</li>
           </ul>
         </div>
+
+        <!-- FAQ -->
+        <div class="faq-section">
+          <h3 style="font-family:var(--font-display);font-size:22px;font-weight:600;margin-bottom:20px;">Preguntas frecuentes</h3>
+          <div class="faq-item">
+            <div class="faq-question">¿Es gratis? <span class="faq-toggle">+</span></div>
+            <div class="faq-answer"><p>Sí, completamente gratis. Sin límites de uso, sin marcas de agua, sin registro.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">¿Mis imágenes se suben a algún servidor? <span class="faq-toggle">+</span></div>
+            <div class="faq-answer"><p>No. Todo el procesamiento ocurre en tu navegador con tecnología de IA. Tus imágenes nunca salen de tu dispositivo.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">¿Qué formatos soporta? <span class="faq-toggle">+</span></div>
+            <div class="faq-answer"><p>Aceptamos JPG, PNG y WEBP. El resultado siempre se descarga como PNG con transparencia.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">¿Funciona en el celular? <span class="faq-toggle">+</span></div>
+            <div class="faq-answer"><p>Sí, funciona perfectamente en dispositivos móviles. Puedes tomar una foto o seleccionar desde tu galería.</p></div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -246,17 +342,14 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-bottom" style="border-top:none; padding-top:0">
-        <a href="../index.html" class="logo">
-          <span class="logo-mark">P</span>
-          <span class="logo-text">priquer</span>
-        </a>
-        <p style="color:var(--text-3); font-size:13px;">© 2025 Priquer · <a href="../privacidad.html" style="color:var(--text-3)">Privacidad</a> · <a href="../terminos.html" style="color:var(--text-3)">Términos</a></p>
+        <a href="../index.html" class="logo-pq" style="font-size:20px;">Pq</a>
+        <p style="color:var(--text-3); font-size:13px;">© 2026 Pq · <a href="../legal/privacidad.html" style="color:var(--text-3)">Privacidad</a> · <a href="../legal/terminos.html" style="color:var(--text-3)">Términos</a></p>
       </div>
     </div>
   </footer>
 
-  <!-- Background removal library - runs entirely in browser -->
   <script src="https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.4.5/dist/browser.js"></script>
   <script src="../js/background-remover.js"></script>
+  <script src="../js/main.js"></script>
 </body>
 </html>

@@ -1,6 +1,3 @@
-// Priquer — background-remover.js
-// Procesa imágenes 100% en el navegador con @imgly/background-removal
-
 let resultBlob = null;
 let originalFileName = '';
 
@@ -11,9 +8,9 @@ const fileInput    = document.getElementById('fileInput');
 const progressFill = document.getElementById('progressFill');
 const originalImg  = document.getElementById('originalImg');
 const resultImg    = document.getElementById('resultImg');
-const resultImgWrap = resultImg ? resultImg.closest('.result-img-wrap') : null;
+const resultImgWrap = document.getElementById('resultImgWrap');
 
-// Drag & drop
+// Drag & drop + click on upload zone
 uploadZone.addEventListener('dragover', (e) => {
   e.preventDefault();
   uploadZone.classList.add('drag-over');
@@ -30,14 +27,23 @@ uploadZone.addEventListener('drop', (e) => {
   if (files.length) handleFiles(files);
 });
 
-uploadZone.addEventListener('click', () => {
-  fileInput.click();
-});
-
+// File input change (works on iOS because input is overlay with opacity:0)
 fileInput.addEventListener('change', (e) => {
   const files = Array.from(e.target.files);
   if (files.length) handleFiles(files);
+  fileInput.value = '';
 });
+
+// Also allow clicking the .btn-upload to trigger file picker as fallback
+document.querySelector('.btn-upload')?.addEventListener('click', (e) => {
+  e.stopPropagation();
+  fileInput.click();
+});
+
+// Update hint text for mobile
+if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+  document.getElementById('uploadHint').textContent = 'toca para seleccionar desde tu dispositivo';
+}
 
 function handleFiles(files) {
   if (files.length === 1) {
@@ -48,23 +54,20 @@ function handleFiles(files) {
 }
 
 async function processImage(file) {
-  if (file.size > 10 * 1024 * 1024) {
-    alert('El archivo es muy grande. Máximo 10MB.');
+  if (file.size > 20 * 1024 * 1024) {
+    alert('El archivo es muy grande. Máximo 20MB.');
     return;
   }
 
   originalFileName = file.name.replace(/\.[^/.]+$/, '');
 
-  // Mostrar original
   const originalUrl = URL.createObjectURL(file);
   originalImg.src = originalUrl;
 
-  // Cambiar a estado processing
   uploadZone.style.display = 'none';
   processingZone.style.display = 'block';
   resultZone.style.display = 'none';
 
-  // Animar progress bar
   let progress = 0;
   const progressInterval = setInterval(() => {
     progress = Math.min(progress + Math.random() * 8, 85);
@@ -75,7 +78,6 @@ async function processImage(file) {
   document.getElementById('processingMsg').textContent = 'La IA está procesando tu imagen. Esto puede tomar entre 5 y 20 segundos.';
 
   try {
-    // Procesamiento con @imgly/background-removal
     const blob = await imglyRemoveBackground(file, {
       output: { format: 'image/png', quality: 1 },
       progress: (key, current, total) => {
@@ -97,14 +99,9 @@ async function processImage(file) {
       processingZone.style.display = 'none';
       resultZone.style.display = 'block';
 
-      // Trackear operación completada
       if (window.PriqurAnalytics) {
-        window.PriqurAnalytics.trackOperation('background_remover');
+        window.PriqurAnalytics.trackOperation('background_remover', { file_size: file.size });
       }
-
-      // Setup download button
-      document.getElementById('btnDownload').onclick = () => downloadResult();
-
     }, 600);
 
   } catch (err) {
@@ -114,11 +111,16 @@ async function processImage(file) {
     document.getElementById('processingMsg').textContent = 'No se pudo procesar la imagen. Intenta con otra imagen o recarga la página.';
     progressFill.style.width = '0%';
 
+    if (window.PriqurAnalytics) {
+      window.PriqurAnalytics.trackError('background_remover', err.message || 'unknown');
+    }
+
     setTimeout(resetTool, 3000);
   }
 }
 
-function downloadResult() {
+// Download
+document.getElementById('btnDownload').addEventListener('click', () => {
   if (!resultBlob) return;
   const a = document.createElement('a');
   a.href = URL.createObjectURL(resultBlob);
@@ -126,9 +128,12 @@ function downloadResult() {
   a.click();
 
   if (window.PriqurAnalytics) {
-    window.PriqurAnalytics.trackEvent('herramienta', 'descarga', 'background_remover');
+    window.PriqurAnalytics.trackDownload('background_remover');
   }
-}
+});
+
+// New image
+document.getElementById('btnNewImage').addEventListener('click', resetTool);
 
 function resetTool() {
   uploadZone.style.display = 'flex';
@@ -139,7 +144,6 @@ function resetTool() {
   resultBlob = null;
   originalFileName = '';
 
-  // Reset bg preview
   if (resultImgWrap) {
     resultImgWrap.style.background = '';
   }
@@ -159,6 +163,7 @@ document.querySelectorAll('.swatch').forEach(swatch => {
 
     if (bg === 'transparent') {
       resultImgWrap.style.background = '';
+      resultImgWrap.style.backgroundImage = '';
     } else {
       resultImgWrap.style.background = bg;
       resultImgWrap.style.backgroundImage = 'none';
@@ -166,7 +171,7 @@ document.querySelectorAll('.swatch').forEach(swatch => {
   });
 });
 
-// Procesar múltiples imágenes
+// Multi-image processing
 async function processMultiple(files) {
   const queueContainer = document.getElementById('queueContainer');
   const imageQueue = document.getElementById('imageQueue');
@@ -188,10 +193,8 @@ async function processMultiple(files) {
     return { file, item };
   });
 
-  // Procesar el primero en el área principal
   processImage(files[0]);
 
-  // Procesar el resto en paralelo y ofrecer descarga individual
   for (let i = 1; i < items.length; i++) {
     const { file, item } = items[i];
     const statusEl = item.querySelector('.queue-item-status');
@@ -207,7 +210,7 @@ async function processMultiple(files) {
       statusEl.className = 'queue-item-status status-done';
 
       const dlBtn = document.createElement('button');
-      dlBtn.style.cssText = 'display:block;width:100%;padding:6px;background:var(--accent);color:white;border:none;font-size:11px;cursor:pointer;font-family:var(--font-body);';
+      dlBtn.style.cssText = 'display:block;width:100%;padding:8px;background:var(--green);color:#080810;border:none;font-size:12px;cursor:pointer;font-weight:600;';
       dlBtn.textContent = 'Descargar';
       dlBtn.onclick = () => {
         const a = document.createElement('a');
@@ -224,3 +227,10 @@ async function processMultiple(files) {
     }
   }
 }
+
+// FAQ accordion
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.querySelector('.faq-question').addEventListener('click', () => {
+    item.classList.toggle('open');
+  });
+});

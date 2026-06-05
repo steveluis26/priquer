@@ -3,29 +3,91 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Priquer — Herramientas gratuitas online</title>
-  <meta name="description" content="Herramientas online gratuitas para editar imágenes y documentos. Quita fondos de imágenes, convierte archivos y más. Rápido, gratis y sin instalación." />
-  <meta name="keywords" content="quitar fondo imagen gratis, imagen fondo transparente, herramientas online gratis, convertir imagen png" />
-  <meta property="og:title" content="Priquer — Herramientas gratuitas online" />
-  <meta property="og:description" content="Herramientas online gratuitas para editar imágenes y documentos. Sin registro, sin costo." />
+  <title>Pq — Herramientas gratuitas online</title>
+  <meta name="description" content="Herramientas online gratuitas para editar imágenes, convertir documentos y más. Sin registro, sin marcas de agua, todo en tu navegador." />
+  <meta name="keywords" content="quitar fondo imagen gratis, pdf a word online, json viewer, herramientas online gratis, convertir png transparente" />
+  <link rel="canonical" href="https://priquer.com" />
+  <meta property="og:title" content="Pq — Herramientas gratuitas online" />
+  <meta property="og:description" content="Quita fondos, convierte PDF a Word, visualiza JSON y más. Gratis, sin registro, sin marcas de agua." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://priquer.com" />
-  <link rel="canonical" href="https://priquer.com" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Pq — Herramientas gratuitas online" />
+  <meta name="twitter:description" content="Herramientas online gratuitas que realmente necesitas. Todo en tu navegador, sin instalar nada." />
 
-  <!-- Google Analytics placeholder -->
-  <!-- Reemplaza G-XXXXXXXXXX con tu Measurement ID -->
-  <!--
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Pq",
+    "url": "https://priquer.com",
+    "description": "Herramientas online gratuitas para editar imágenes y documentos.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://priquer.com/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Herramientas gratuitas",
+    "url": "https://priquer.com",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "WebApplication",
+          "name": "Quitar fondo de imagen",
+          "url": "https://priquer.com/tools/background-remover",
+          "description": "Elimina el fondo de cualquier imagen al instante. Obtén PNG con transparencia.",
+          "applicationCategory": "Multimedia",
+          "operatingSystem": "Browser"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "WebApplication",
+          "name": "PDF a Word",
+          "url": "https://priquer.com/tools/pdf-to-word",
+          "description": "Convierte PDF a documentos Word editables. Con OCR para PDF escaneados.",
+          "applicationCategory": "Document",
+          "operatingSystem": "Browser"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "WebApplication",
+          "name": "Visor JSON",
+          "url": "https://priquer.com/tools/json-viewer",
+          "description": "Visualiza, formatea y convierte archivos JSON. Tree view, CSV, YAML y XML.",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Browser"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-XXXXXXXXXX');
+    gtag('event', 'page_view', { page_title: 'Inicio', page_location: '/' });
   </script>
-  -->
 
-  <!-- Google AdSense placeholder -->
-  <!-- Activar cuando tengas aprobación -->
+  <!-- Google AdSense (activar cuando tengas aprobación) -->
   <!--
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
   -->
@@ -34,21 +96,23 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 font-family=%22Syne,system-ui,sans-serif%22 font-weight=%22800%22 fill=%22%2322c98a%22>Pq</text></svg>" />
 </head>
 <body>
 
   <!-- NAVBAR -->
   <nav class="navbar">
-    <a href="index.html" class="logo">
-      <span class="logo-mark">P</span>
-      <span class="logo-text">priquer</span>
-    </a>
+    <a href="index.html" class="logo-pq">Pq</a>
+    <button class="nav-hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
     <div class="nav-links">
       <a href="#herramientas">Herramientas</a>
       <a href="#como-funciona">Cómo funciona</a>
+      <a href="tools/background-remover.html" class="nav-cta">Empezar gratis</a>
     </div>
-    <button class="nav-cta" onclick="location.href='tools/background-remover.html'">Empezar gratis</button>
   </nav>
+  <div class="nav-overlay"></div>
 
   <!-- HERO -->
   <section class="hero">
@@ -64,29 +128,19 @@
         Herramientas que<br />
         <span class="hero-accent">realmente necesitas</span>
       </h1>
-      <p class="hero-sub">Edita imágenes, convierte archivos y más — todo desde tu navegador, sin instalar nada, sin pagar nada.</p>
+      <p class="hero-sub">Edita imágenes, convierte documentos y visualiza JSON — todo desde tu navegador, sin instalar nada, sin pagar nada.</p>
+      <div class="hero-stats" id="heroCounters">
+        <div class="counter-item">
+          <span class="num" data-counter="background_remover" data-type="all">0</span>
+          <span>imágenes sin fondo · <span class="month"><span data-counter="background_remover" data-type="month">0</span> este mes</span></span>
+        </div>
+      </div>
       <div class="hero-actions">
         <a href="tools/background-remover.html" class="btn-primary">
           <span>Quitar fondo de imagen</span>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <a href="#herramientas" class="btn-ghost">Ver todas las herramientas</a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat">
-          <span class="stat-num">100%</span>
-          <span class="stat-label">Gratuito</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-num">0</span>
-          <span class="stat-label">Registros</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-num">∞</span>
-          <span class="stat-label">Usos</span>
-        </div>
+        <a href="#herramientas" class="btn-ghost">Ver todas</a>
       </div>
     </div>
     <div class="hero-visual">
@@ -97,19 +151,26 @@
         </div>
         <div class="preview-body">
           <div class="preview-before">
-            <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=200&h=200&fit=crop" alt="antes" />
+            <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=200&h=200&fit=crop" alt="antes" loading="lazy" />
             <span class="preview-label">Antes</span>
           </div>
           <div class="preview-arrow">→</div>
           <div class="preview-after">
             <div class="checker"></div>
-            <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=200&h=200&fit=crop" alt="después" class="preview-cutout" />
+            <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=200&h=200&fit=crop" alt="después" class="preview-cutout" loading="lazy" />
             <span class="preview-label">Después</span>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- AD SLOT 1 -->
+  <div class="container">
+    <div class="ad-banner" style="min-height:90px;">
+      <!-- Inserta código de AdSense aquí cuando esté aprobado -->
+    </div>
+  </div>
 
   <!-- TOOLS GRID -->
   <section class="tools-section" id="herramientas">
@@ -133,15 +194,15 @@
           <div class="tool-info">
             <div class="tool-badge">Más popular</div>
             <h3>Quitar fondo de imagen</h3>
-            <p>Elimina el fondo de cualquier imagen al instante. Perfecto para productos, fotos de perfil y diseños.</p>
+            <p>Elimina el fondo de cualquier imagen al instante. Obtén PNG con transparencia.</p>
           </div>
           <div class="tool-arrow">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
         </a>
 
-        <div class="tool-card coming">
-          <div class="tool-icon muted">
+        <a href="tools/pdf-to-word.html" class="tool-card">
+          <div class="tool-icon">
             <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
               <path d="M6 4h10l6 6v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2z" stroke="currentColor" stroke-width="1.5"/>
               <path d="M16 4v6h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -149,87 +210,44 @@
             </svg>
           </div>
           <div class="tool-info">
-            <div class="tool-badge soon">Próximamente</div>
+            <div class="tool-badge">Nuevo</div>
             <h3>PDF a Word</h3>
-            <p>Convierte tus archivos PDF a documentos Word editables en segundos.</p>
+            <p>Convierte PDF a Word editable. Con OCR para documentos escaneados.</p>
           </div>
-          <div class="tool-arrow muted">
+          <div class="tool-arrow">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-        </div>
+        </a>
 
-        <div class="tool-card coming">
-          <div class="tool-icon muted">
+        <a href="tools/json-viewer.html" class="tool-card">
+          <div class="tool-icon">
             <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-              <path d="M6 4h10l6 6v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2z" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M16 4v6h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M14 22v-8m-3 5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M8 4L3 9v10l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M20 4l5 5v10l-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M11 10l3 4-3 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M17 10l-3 4 3 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
           <div class="tool-info">
-            <div class="tool-badge soon">Próximamente</div>
-            <h3>Comprimir PDF</h3>
-            <p>Reduce el tamaño de tus PDFs sin perder calidad. Ideal para enviar por correo.</p>
+            <div class="tool-badge">Nuevo</div>
+            <h3>Visor JSON</h3>
+            <p>Formatea, valida y visualiza JSON con árbol interactivo. Convierte a CSV, YAML y XML.</p>
           </div>
-          <div class="tool-arrow muted">
+          <div class="tool-arrow">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-        </div>
-
-        <div class="tool-card coming">
-          <div class="tool-icon muted">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-              <rect x="3" y="3" width="22" height="22" rx="3" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M3 10h22M10 10v15" stroke="currentColor" stroke-width="1.5"/>
-            </svg>
-          </div>
-          <div class="tool-info">
-            <div class="tool-badge soon">Próximamente</div>
-            <h3>PDF a JPG</h3>
-            <p>Convierte páginas de PDF a imágenes JPG de alta calidad.</p>
-          </div>
-          <div class="tool-arrow muted">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-        </div>
-
-        <div class="tool-card coming">
-          <div class="tool-icon muted">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-              <path d="M14 3L3 8l11 5 11-5-11-5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-              <path d="M3 14l11 5 11-5M3 19l11 5 11-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="tool-info">
-            <div class="tool-badge soon">Próximamente</div>
-            <h3>Word a PDF</h3>
-            <p>Convierte documentos Word a PDF preservando el formato original.</p>
-          </div>
-          <div class="tool-arrow muted">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-        </div>
-
-        <div class="tool-card coming">
-          <div class="tool-icon muted">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-              <circle cx="14" cy="14" r="11" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M14 9v5l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="tool-info">
-            <div class="tool-badge soon">Próximamente</div>
-            <h3>Más herramientas</h3>
-            <p>Seguimos agregando herramientas nuevas. ¿Qué necesitas? Escríbenos.</p>
-          </div>
-          <div class="tool-arrow muted">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-        </div>
+        </a>
 
       </div>
     </div>
   </section>
+
+  <!-- AD SLOT 2 -->
+  <div class="container">
+    <div class="ad-slot" style="min-height:250px;">
+      <!-- Inserta código de AdSense aquí cuando esté aprobado -->
+    </div>
+  </div>
 
   <!-- HOW IT WORKS -->
   <section class="how-section" id="como-funciona">
@@ -244,7 +262,7 @@
           <div class="step-num">01</div>
           <div class="step-content">
             <h3>Sube tu archivo</h3>
-            <p>Arrastra y suelta o selecciona desde tu dispositivo. JPG, PNG, PDF — lo que necesites.</p>
+            <p>Arrastra y suelta o selecciona desde tu dispositivo. JPG, PNG, PDF, JSON — lo que necesites.</p>
           </div>
         </div>
         <div class="step-connector"></div>
@@ -252,7 +270,7 @@
           <div class="step-num">02</div>
           <div class="step-content">
             <h3>Procesamiento automático</h3>
-            <p>Nuestra IA trabaja directamente en tu navegador. Tu archivo nunca sale de tu dispositivo.</p>
+            <p>Todo funciona directamente en tu navegador. Tus archivos nunca salen de tu dispositivo.</p>
           </div>
         </div>
         <div class="step-connector"></div>
@@ -266,6 +284,13 @@
       </div>
     </div>
   </section>
+
+  <!-- AD SLOT 3 -->
+  <div class="container">
+    <div class="ad-slot" style="min-height:250px;">
+      <!-- Inserta código de AdSense aquí cuando esté aprobado -->
+    </div>
+  </div>
 
   <!-- PRIVACY BANNER -->
   <section class="privacy-section">
@@ -285,30 +310,26 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <a href="index.html" class="logo">
-            <span class="logo-mark">P</span>
-            <span class="logo-text">priquer</span>
-          </a>
+          <a href="index.html" class="logo-pq">Pq</a>
           <p>Herramientas online gratuitas para todos.</p>
         </div>
         <div class="footer-links">
           <div class="footer-col">
             <h4>Herramientas</h4>
             <a href="tools/background-remover.html">Quitar fondo</a>
-            <a href="#">PDF a Word</a>
-            <a href="#">Comprimir PDF</a>
-            <a href="#">PDF a JPG</a>
+            <a href="tools/pdf-to-word.html">PDF a Word</a>
+            <a href="tools/json-viewer.html">Visor JSON</a>
           </div>
           <div class="footer-col">
             <h4>Legal</h4>
-            <a href="privacidad.html">Privacidad</a>
-            <a href="terminos.html">Términos de uso</a>
+            <a href="legal/privacidad.html">Privacidad</a>
+            <a href="legal/terminos.html">Términos de uso</a>
           </div>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2025 Priquer. Todos los derechos reservados.</p>
-        <p>Hecho con ♥ para Latinoamérica</p>
+        <p>© 2026 Pq. Todos los derechos reservados.</p>
+        <p>Respetamos tu privacidad</p>
       </div>
     </div>
   </footer>

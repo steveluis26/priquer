@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visor JSON Gratis — Pq</title>
+  <meta name="description" content="Visualiza, formatea y valida JSON online gratis. Tree view interactivo, conversiones a CSV, YAML y XML. Sin registro." />
+  <meta name="keywords" content="json viewer, json formatter, json validator, json to csv, json to yaml, json to xml" />
+  <link rel="canonical" href="https://priquer.com/tools/json-viewer" />
+  <meta property="og:title" content="Visor JSON Gratis — Pq" />
+  <meta property="og:description" content="Formatea, valida y visualiza JSON. Tree view, conversiones CSV/YAML/XML. Gratis." />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Visor JSON",
+    "url": "https://priquer.com/tools/json-viewer",
+    "description": "Visualiza, formatea y convierte archivos JSON. Tree view, CSV, YAML y XML.",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Browser",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://priquer.com" },
+      { "@type": "ListItem", "position": 2, "name": "Visor JSON", "item": "https://priquer.com/tools/json-viewer" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿El visor JSON es gratis?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, completamente gratis. Sin límites de uso ni registro." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Puedo convertir JSON a CSV?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, puedes convertir JSON a CSV, YAML y XML fácilmente." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Mis datos se suben a algún servidor?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Todo el procesamiento ocurre en tu navegador. Tus datos nunca salen de tu dispositivo." }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+    gtag('event', 'tool_view', { tool_name: 'json_viewer' });
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/tool.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 font-family=%22Syne,system-ui,sans-serif%22 font-weight=%22800%22 fill=%22%2322c98a%22>Pq</text></svg>" />
+  <style>
+    .json-editor-wrap {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+    }
+
+    .json-editor-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 14px 18px;
+      background: var(--surface-2);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .json-editor-toolbar button {
+      background: var(--surface);
+      color: var(--text-2);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      min-height: 32px;
+      font-family: var(--font-body);
+    }
+
+    @media (hover: hover) {
+      .json-editor-toolbar button:hover {
+        border-color: var(--green);
+        color: var(--green);
+        background: var(--green-dark);
+      }
+    }
+
+    .json-editor-toolbar button.active {
+      background: var(--green);
+      color: #080810;
+      border-color: var(--green);
+    }
+
+    .json-editor-toolbar .group {
+      display: flex;
+      gap: 4px;
+    }
+
+    .json-editor-toolbar .divider {
+      width: 1px;
+      background: var(--border);
+      margin: 0 4px;
+    }
+
+    .json-editor-toolbar .right {
+      margin-left: auto;
+    }
+
+    .json-editor-toolbar .status {
+      font-size: 11px;
+      color: var(--text-3);
+      align-self: center;
+    }
+
+    .json-editor-toolbar .status.ok { color: var(--green); }
+    .json-editor-toolbar .status.err { color: #ff6b6b; }
+
+    .json-textarea {
+      width: 100%;
+      min-height: 350px;
+      background: var(--bg);
+      color: var(--text);
+      border: none;
+      padding: 20px;
+      font-family: 'DM Mono', 'SF Mono', 'Fira Code', monospace;
+      font-size: 13px;
+      line-height: 1.6;
+      resize: vertical;
+      outline: none;
+      tab-size: 2;
+    }
+
+    .json-tree-view {
+      background: var(--bg);
+      padding: 20px;
+      min-height: 350px;
+      max-height: 500px;
+      overflow: auto;
+      font-family: 'DM Mono', 'SF Mono', 'Fira Code', monospace;
+      font-size: 13px;
+      line-height: 1.7;
+      display: none;
+    }
+
+    .tree-node {
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .tree-toggle {
+      cursor: pointer;
+      color: var(--green);
+      margin-right: 4px;
+      user-select: none;
+      display: inline-block;
+      width: 14px;
+      text-align: center;
+    }
+
+    .tree-key {
+      color: #7ec8e3;
+    }
+
+    .tree-string { color: #f7dc6f; }
+    .tree-number { color: #ff9ff3; }
+    .tree-boolean { color: #ff6b6b; }
+    .tree-null { color: var(--text-3); }
+    .tree-bracket { color: var(--text-2); }
+    .tree-collapsed { color: var(--text-3); font-style: italic; }
+
+    .json-convert-output {
+      background: var(--bg);
+      padding: 20px;
+      min-height: 200px;
+      max-height: 400px;
+      overflow: auto;
+      font-family: 'DM Mono', 'SF Mono', 'Fira Code', monospace;
+      font-size: 13px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      display: none;
+      color: var(--text-2);
+    }
+
+    .json-upload-zone {
+      border: 1px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      position: relative;
+      margin-bottom: 0;
+    }
+
+    @media (hover: hover) {
+      .json-upload-zone:hover { border-color: var(--green); background: rgba(34,201,138,0.03); }
+    }
+
+    .json-upload-zone p {
+      font-size: 13px;
+      color: var(--text-3);
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .json-editor-toolbar { flex-direction: column; align-items: stretch; }
+      .json-editor-toolbar .group { flex-wrap: wrap; }
+      .json-editor-toolbar .right { margin-left: 0; }
+      .json-editor-toolbar button { flex: 1; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html" class="logo-pq">Pq</a>
+    <button class="nav-hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="../index.html#herramientas">Herramientas</a>
+      <a href="../index.html#como-funciona">Cómo funciona</a>
+      <a href="../index.html" class="nav-cta">100% Gratis</a>
+    </div>
+  </nav>
+  <div class="nav-overlay"></div>
+
+  <main class="tool-page">
+
+    <div class="tool-header">
+      <div class="tool-header-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="grid-overlay"></div>
+      </div>
+      <div class="container">
+        <a href="../index.html" class="breadcrumb">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 11L5 7l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Todas las herramientas
+        </a>
+        <div class="tool-header-content">
+          <div class="tool-header-icon">
+            <svg width="32" height="32" viewBox="0 0 28 28" fill="none">
+              <path d="M8 4L3 9v10l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M20 4l5 5v10l-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M11 10l3 4-3 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M17 10l-3 4 3 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <h1>Visor JSON</h1>
+            <p>Formatea, valida y visualiza JSON. Tree view interactivo y conversiones.</p>
+          </div>
+        </div>
+        <div class="tool-features">
+          <span class="feature-tag">✓ Formatear / Minificar</span>
+          <span class="feature-tag">✓ Validador</span>
+          <span class="feature-tag">✓ Tree view</span>
+          <span class="feature-tag">✓ CSV · YAML · XML</span>
+          <span class="feature-tag">✓ Sin servidor — privado</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- AD SLOT 1 -->
+    <div class="container">
+      <div class="ad-banner" style="min-height:90px;">
+        <!-- AdSense -->
+      </div>
+    </div>
+
+    <div class="container tool-container">
+
+      <!-- JSON Editor -->
+      <div class="json-editor-wrap">
+        <div class="json-editor-toolbar">
+          <div class="group">
+            <button onclick="formatJSON()" title="Formatear">{} Formatear</button>
+            <button onclick="minifyJSON()" title="Minificar">{ } Minificar</button>
+            <button onclick="validateJSON()" title="Validar">✓ Validar</button>
+          </div>
+          <div class="divider"></div>
+          <div class="group">
+            <button onclick="showTree()" class="active" id="btnTree">🌳 Tree</button>
+            <button onclick="showEditor()" id="btnEditor">📝 Editor</button>
+          </div>
+          <div class="divider"></div>
+          <div class="group">
+            <button onclick="convertTo('csv')">CSV</button>
+            <button onclick="convertTo('yaml')">YAML</button>
+            <button onclick="convertTo('xml')">XML</button>
+          </div>
+          <div class="divider"></div>
+          <div class="group right">
+            <button onclick="copyJSON()">📋 Copiar</button>
+            <button onclick="downloadJSON()">⬇ Descargar</button>
+          </div>
+          <span class="status" id="jsonStatus">Listo</span>
+        </div>
+
+        <textarea class="json-textarea" id="jsonInput" placeholder='Pega tu JSON aquí...
+Ejemplo: { "nombre": "Juan", "edad": 30, "activo": true }'>{"nombre": "Juan", "edad": 30, "activo": true, "hobbies": ["leer", "correr", "programar"], "direccion": { "ciudad": "Lima", "pais": "Peru" }}</textarea>
+
+        <div class="json-tree-view" id="jsonTreeView"></div>
+        <div class="json-convert-output" id="jsonConvertOutput"></div>
+      </div>
+
+      <div class="json-upload-zone" id="jsonUploadZone" style="margin-top:16px;">
+        <input type="file" accept=".json,application/json" class="file-input-overlay" id="jsonFileInput" />
+        <p>📂 Cargar archivo .json</p>
+      </div>
+
+      <!-- AD SLOT 2 -->
+      <div class="ad-slot" style="min-height:250px;margin-top:24px;">
+        <!-- AdSense -->
+      </div>
+
+    </div>
+
+    <!-- INFO -->
+    <section class="tool-info-section">
+      <div class="container">
+        <div class="info-grid">
+          <div class="info-card">
+            <div class="info-num">01</div>
+            <h4>Pega o sube tu JSON</h4>
+            <p>Escribe, pega o carga un archivo .json directamente en el editor.</p>
+          </div>
+          <div class="info-card">
+            <div class="info-num">02</div>
+            <h4>Visualiza en Tree View</h4>
+            <p>Explora tu JSON de forma interactiva con el árbol colapsable.</p>
+          </div>
+          <div class="info-card">
+            <div class="info-num">03</div>
+            <h4>Convierte y descarga</h4>
+            <p>Convierte a CSV, YAML o XML. Copia o descarga el resultado.</p>
+          </div>
+        </div>
+
+        <!-- AD SLOT 3 -->
+        <div class="ad-banner" style="min-height:90px;">
+          <!-- AdSense -->
+        </div>
+
+        <div class="seo-content">
+          <h2>Visor JSON online — Formatea, valida y convierte</h2>
+          <p>Nuestro visor JSON te permite formatear, validar y visualizar archivos JSON de forma gratuita. Con el tree view interactivo puedes explorar estructuras complejas fácilmente. Además, convierte tu JSON a CSV, YAML o XML con un solo clic.</p>
+          <p>Todo el procesamiento ocurre en tu navegador — tus datos nunca se suben a ningún servidor. Ideal para desarrolladores, analistas de datos y cualquier persona que trabaje con JSON.</p>
+
+          <h3>¿Para qué usar un visor JSON?</h3>
+          <ul>
+            <li>Depurar respuestas de APIs</li>
+            <li>Visualizar archivos de configuración</li>
+            <li>Convertir datos entre formatos</li>
+            <li>Validar estructuras JSON</li>
+            <li>Explorar datos anidados complejos</li>
+          </ul>
+        </div>
+
+        <!-- FAQ -->
+        <div class="faq-section">
+          <h3 style="font-family:var(--font-display);font-size:22px;font-weight:600;margin-bottom:20px;">Preguntas frecuentes</h3>
+
+          <div class="faq-item">
+            <div class="faq-question">¿Es gratis el visor JSON? <span class="faq-toggle">+</span></div>
+            <div class="faq-answer"><p>Sí, completamente gratis. Sin límites de uso ni registro.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">¿Puedo convertir JSON a otros formatos? <span class="faq-toggle">+</span></div>
+            <div class="faq-answer"><p>Sí, puedes convertir JSON a CSV, YAML y XML con los botones en la barra de herramientas.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">¿Mis datos están seguros? <span class="faq-toggle">+</span></div>
+            <div class="faq-answer"><p>Sí. Todo el procesamiento ocurre en tu navegador. Tus datos nunca se envían a ningún servidor.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">¿Soporta JSON muy grandes? <span class="faq-toggle">+</span></div>
+            <div class="faq-answer"><p>Sí, pero el rendimiento depende de tu dispositivo. Para JSON muy grandes (>10MB), recomendamos usar el editor en lugar del tree view.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top:none; padding-top:0">
+        <a href="../index.html" class="logo-pq" style="font-size:20px;">Pq</a>
+        <p style="color:var(--text-3); font-size:13px;">© 2026 Pq · <a href="../legal/privacidad.html" style="color:var(--text-3)">Privacidad</a> · <a href="../legal/terminos.html" style="color:var(--text-3)">Términos</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4/dist/js-yaml.min.js"></script>
+  <script src="../js/json-tools.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

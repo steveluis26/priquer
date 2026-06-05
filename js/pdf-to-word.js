@@ -60,24 +60,28 @@ async function handleFile(file) {
       if (text.length > 30) {
         pageTexts.push({ type: 'text', content: text });
       } else {
-        // Need OCR — render page to image
         document.getElementById('processingMsg').textContent = `Página ${i} sin texto extraíble. Aplicando OCR...`;
-        const viewport = page.getViewport({ scale: 2.5 });
+        const viewport = page.getViewport({ scale: 2.0 });
         const canvas = document.createElement('canvas');
         canvas.width = viewport.width;
         canvas.height = viewport.height;
         const ctx = canvas.getContext('2d');
         await page.render({ canvasContext: ctx, viewport }).promise;
 
-        const { data } = await Tesseract.recognize(canvas.toDataURL('image/png'), 'spa+eng', {
-          logger: (m) => {
-            if (m.status === 'recognizing text') {
-              const pct = Math.round(m.progress * 100);
-              progressFill.style.width = Math.min(pct, 99) + '%';
+        try {
+          const { data } = await Tesseract.recognize(canvas, 'spa+eng', {
+            logger: (m) => {
+              if (m.status === 'recognizing text') {
+                const pct = Math.round(m.progress * 100);
+                progressFill.style.width = Math.min(pct, 99) + '%';
+              }
             }
-          }
-        });
-        pageTexts.push({ type: 'ocr', content: data.text.trim() });
+          });
+          pageTexts.push({ type: 'ocr', content: data.text.trim() || '(sin texto reconocido)' });
+        } catch (ocrErr) {
+          console.error('OCR error en página', i, ocrErr);
+          pageTexts.push({ type: 'ocr', content: '' });
+        }
       }
 
       const overallProgress = Math.round((i / totalPages) * 85);

@@ -1141,8 +1141,13 @@ button { cursor: pointer; font-family: var(--font-body); }
 
   .hero {
     flex-direction: column;
-    padding: 100px 20px 60px;
+    padding: 80px 16px 40px;
     text-align: center;
+  }
+
+  .hero-title {
+    font-size: clamp(28px, 7vw, 38px);
+    letter-spacing: -1px;
   }
 
   .hero-actions { justify-content: center; flex-wrap: wrap; }
@@ -1162,4 +1167,7 @@ button { cursor: pointer; font-family: var(--font-body); }
   .tools-grid { grid-template-columns: 1fr; }
   .footer-links { flex-direction: column; gap: 28px; }
   .hero-stats { gap: 16px; }
+  .hero { padding: 60px 16px 32px; }
+  .hero-title { font-size: clamp(24px, 7.5vw, 32px); letter-spacing: -0.5px; }
+  .hero-sub { font-size: 15px; }
 }

@@ -58,6 +58,20 @@ document.addEventListener('DOMContentLoaded', () => {
   style.textContent = '.card-visible { opacity: 1 !important; transform: translateY(0) !important; }';
   document.head.appendChild(style);
 
+  // Dropdown toggle (mobile)
+  document.querySelectorAll('.nav-dropdown-trigger').forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      const isDesktop = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      if (isDesktop) return;
+      e.stopPropagation();
+      trigger.closest('.nav-dropdown').classList.toggle('open');
+    });
+  });
+
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.nav-dropdown.open').forEach(d => d.classList.remove('open'));
+  });
+
   // Fetch counters from API
   fetchCounters();
 });

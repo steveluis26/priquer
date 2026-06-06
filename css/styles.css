@@ -136,6 +136,87 @@ button { cursor: pointer; font-family: var(--font-body); }
   }
 }
 
+/* DROPDOWN */
+.nav-dropdown {
+  position: relative;
+  cursor: pointer;
+}
+
+.nav-dropdown-trigger {
+  font-size: 14px;
+  color: var(--text-2);
+  transition: color 0.2s;
+  background: none;
+  border: none;
+  font-family: var(--font-body);
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+@media (hover: hover) {
+  .nav-dropdown-trigger:hover { color: var(--text); }
+}
+
+.nav-dropdown-arrow {
+  font-size: 10px;
+  transition: transform 0.2s;
+}
+
+.nav-dropdown.open .nav-dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: -12px;
+  min-width: 220px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 6px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: all 0.2s ease;
+  z-index: 200;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+@media (hover: hover) {
+  .nav-dropdown:hover .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+.nav-dropdown.open .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav-dropdown-menu a {
+  display: block;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: var(--text-2);
+  border-radius: 8px;
+  transition: all 0.15s;
+  text-decoration: none;
+}
+
+@media (hover: hover) {
+  .nav-dropdown-menu a:hover {
+    background: var(--green-dark);
+    color: var(--green);
+  }
+}
+
 /* HAMBURGER OVERLAY */
 .nav-overlay {
   display: none;
@@ -1015,8 +1096,41 @@ button { cursor: pointer; font-family: var(--font-body); }
     display: block;
   }
 
-  .nav-links a {
+  .nav-links a, .nav-dropdown-trigger {
     font-size: 16px;
+  }
+
+  .nav-dropdown {
+    width: 100%;
+  }
+
+  .nav-dropdown-trigger {
+    width: 100%;
+    justify-content: space-between;
+    font-size: 16px;
+    color: var(--text-2);
+  }
+
+  .nav-dropdown-menu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    background: transparent;
+    border: none;
+    padding: 0 0 0 12px;
+    margin-top: 8px;
+    display: none;
+  }
+
+  .nav-dropdown.open .nav-dropdown-menu {
+    display: block;
+  }
+
+  .nav-dropdown-menu a {
+    font-size: 14px;
+    padding: 8px 14px;
   }
 
   .nav-cta {

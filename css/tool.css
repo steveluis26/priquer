@@ -715,3 +715,38 @@
 @media (max-width: 640px) {
   .qr-body { grid-template-columns: 1fr; }
 }
+
+.option-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  font-size: 14px;
+  user-select: none;
+}
+.option-check:hover {
+  border-color: var(--green);
+  background: var(--green-dark);
+}
+.option-check input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--green);
+  cursor: pointer;
+}
+
+.copy-color-btn {
+  cursor: pointer;
+  min-width: 70px;
+  text-align: center;
+}
+.copy-color-btn:hover {
+  background: var(--green);
+  color: #080810;
+  border-color: var(--green);
+}

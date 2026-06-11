@@ -1,0 +1,12 @@
+name = "pq-counter"
+main = "index.js"
+compatibility_date = "2025-01-01"
+
+routes = [
+  { pattern = "priquer.com/api/*", zone_id = "29dfb7df47b967d29cab750dad9572ef" }
+]
+
+[[kv_namespaces]]
+binding = "PQ_COUNTER"
+id = "625fa18861fe49158216f6fb82d7d148"
+preview_id = "625fa18861fe49158216f6fb82d7d148"

@@ -4,11 +4,5 @@
   "assets": {
     "directory": ".",
     "exclude": [".git", ".DS_Store", ".wrangler", "node_modules", "wrangler.jsonc", ".wranglerignore"]
-  },
-  "kv_namespaces": [
-    {
-      "binding": "PQ_COUNTER",
-      "id": "625fa18861fe49158216f6fb82d7d148"
-    }
-  ]
+  }
 }

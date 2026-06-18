@@ -173,7 +173,7 @@ button { cursor: pointer; font-family: var(--font-body); }
   position: absolute;
   top: calc(100% + 12px);
   left: -12px;
-  min-width: 220px;
+  min-width: 240px;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -215,6 +215,16 @@ button { cursor: pointer; font-family: var(--font-body); }
     background: var(--green-dark);
     color: var(--green);
   }
+}
+
+.nav-dropdown-section-title {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-3);
+  padding: 12px 14px 4px;
+  pointer-events: none;
 }
 
 /* HAMBURGER OVERLAY */
@@ -1133,10 +1143,9 @@ button { cursor: pointer; font-family: var(--font-body); }
     padding: 8px 14px;
   }
 
-  .nav-cta {
-    margin-top: 8px;
-    width: 100%;
-    text-align: center;
+  .nav-dropdown-section-title {
+    font-size: 10px;
+    padding: 10px 14px 2px;
   }
 
   .hero {

@@ -519,6 +519,7 @@
 /* SEO CONTENT */
 .seo-content {
   max-width: 700px;
+  margin: 0 auto;
 }
 
 .seo-content h2 {
@@ -566,6 +567,8 @@
 
 /* FAQ section */
 .faq-section {
+  max-width: 720px;
+  margin: 0 auto;
   padding: 60px 0;
 }
 

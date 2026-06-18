@@ -1244,6 +1244,7 @@ button { cursor: pointer; font-family: var(--font-body); }
 }
 .blog-content {
   max-width: 720px;
+  margin: 0 auto;
 }
 .blog-content h2 {
   font-family: var(--font-display);

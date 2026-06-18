@@ -43,8 +43,10 @@
     <a href="../index.html" class="logo-pq">Pq</a>
     <div class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open');document.querySelector('.nav-overlay').classList.toggle('show')"><span></span><span></span><span></span></div>
     <div class="nav-links">
-      <div class="nav-dropdown">
-        <a href="../index.html#herramientas" class="nav-dropdown-trigger" style="color:var(--text-2)">Herramientas <span style="font-size:10px">▾</span></a>
+      <a href="index.html" style="color:var(--green); font-weight:600">Blog</a>
+      <a href="../index.html#como-funciona">Cómo funciona</a>
+      <div class="nav-dropdown nav-dropdown-cta">
+        <button class="nav-dropdown-trigger">Herramientas <span class="nav-dropdown-arrow">▾</span></button>
         <div class="nav-dropdown-menu">
           <div class="nav-dropdown-section-title">Imágenes</div>
           <a href="../tools/background-remover">Quitar fondo</a>
@@ -61,7 +63,7 @@
           <a href="../tools/color-converter">Conversor de colores</a>
         </div>
       </div>
-      <a href="index.html" style="color:var(--green); font-weight:600">Blog</a>
+    </div>
     </div>
     <div class="nav-overlay" onclick="document.querySelector('.nav-links').classList.remove('open');document.querySelector('.nav-overlay').classList.remove('show')"></div>
   </nav>

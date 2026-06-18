@@ -136,6 +136,32 @@ button { cursor: pointer; font-family: var(--font-body); }
   }
 }
 
+.nav-dropdown-cta .nav-dropdown-trigger {
+  background: var(--green);
+  color: #080810;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+@media (hover: hover) {
+  .nav-dropdown-cta .nav-dropdown-trigger:hover {
+    background: #1db879;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px var(--green-glow);
+  }
+}
+.nav-dropdown-cta .nav-dropdown-menu {
+  right: 0;
+  left: auto;
+}
+
 /* DROPDOWN */
 .nav-dropdown {
   position: relative;

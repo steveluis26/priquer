@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Qué es un visor JSON y cómo usarlo para depurar datos | Priquer</title>
+  <meta name="description" content="Guía para desarrolladores sobre cómo visualizar, formatear y depurar archivos JSON online. Aprende a usar un visor JSON para analizar APIs y datos estructurados." />
+  <link rel="canonical" href="https://priquer.com/blog/visor-json-depurar-datos" />
+  <meta property="og:title" content="Qué es un visor JSON y cómo usarlo para depurar datos | Priquer" />
+  <meta property="og:description" content="Guía para desarrolladores sobre cómo visualizar y depurar JSON online." />
+  <meta property="og:url" content="https://priquer.com/blog/visor-json-depurar-datos" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://priquer.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:site_name" content="Priquer" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Qué es un visor JSON y cómo usarlo para depurar datos | Priquer" />
+  <meta name="twitter:image" content="https://priquer.com/og-image.png" />
+  <meta name="theme-color" content="#22c98a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="icon" href="/img/logo.svg" type="image/svg+xml" />
+  <meta name="google-adsense-account" content="ca-pub-9661513935527515" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Qué es un visor JSON y cómo usarlo para depurar datos",
+    "description": "Guía para desarrolladores sobre cómo visualizar, formatear y depurar archivos JSON online de forma rápida.",
+    "datePublished": "2026-06-18",
+    "author": { "@type": "Organization", "name": "Priquer", "url": "https://priquer.com/" },
+    "publisher": { "@type": "Organization", "name": "Priquer", "url": "https://priquer.com/" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://priquer.com/blog/visor-json-depurar-datos" }
+  }
+  </script>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="../index.html" class="logo-pq">Pq</a>
+    <div class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open');document.querySelector('.nav-overlay').classList.toggle('show')"><span></span><span></span><span></span></div>
+    <div class="nav-links">
+      <div class="nav-dropdown">
+        <a href="../index.html#herramientas" class="nav-dropdown-trigger" style="color:var(--text-2)">Herramientas <span style="font-size:10px">▾</span></a>
+        <div class="nav-dropdown-menu">
+          <a href="../tools/background-remover">Quitar fondo de imagen</a>
+          <a href="../tools/image-compressor">Compresor de imágenes</a>
+          <a href="../tools/image-converter">Convertidor de imágenes</a>
+          <a href="../tools/image-resizer">Redimensionar imagen</a>
+          <a href="../tools/pdf-to-word">PDF a Word</a>
+          <a href="../tools/json-viewer">Visor JSON</a>
+          <a href="../tools/qr-generator">Generador de QR</a>
+          <a href="../tools/password-generator">Generador de contraseñas</a>
+          <a href="../tools/color-converter">Conversor de colores</a>
+        </div>
+      </div>
+      <a href="index.html" style="color:var(--green); font-weight:600">Blog</a>
+      <a href="../index.html" class="nav-cta">100% Gratis</a>
+    </div>
+    <div class="nav-overlay" onclick="document.querySelector('.nav-links').classList.remove('open');document.querySelector('.nav-overlay').classList.remove('show')"></div>
+  </nav>
+
+  <main class="tool-page">
+    <div class="container" style="padding-top:40px;padding-bottom:60px">
+      <div style="margin-bottom:16px;font-size:14px;color:var(--text-3)">
+        <a href="index.html" style="color:var(--text-3)">Blog</a> <span style="opacity:0.4">/</span> Visor JSON
+      </div>
+
+      <h1 style="font-family:var(--font-display);font-size:clamp(26px,4vw,36px);margin-bottom:16px;letter-spacing:-1px">Qué es un visor JSON y cómo usarlo para depurar datos</h1>
+      <p style="color:var(--text-3);font-size:14px;margin-bottom:32px">18 junio 2026 · 5 min de lectura</p>
+
+      <div class="blog-content">
+        <p>JSON (JavaScript Object Notation) es el formato de intercambio de datos más utilizado en la web moderna. Prácticamente todas las APIs, aplicaciones web y servicios en la nube usan JSON para estructurar y transmitir información. Sin embargo, trabajar con JSON en bruto puede ser tedioso: una respuesta de API sin formatear es difícil de leer, analizar y depurar. Aquí es donde un visor JSON se vuelve indispensable.</p>
+
+        <h2>¿Qué es un visor JSON?</h2>
+        <p>Un visor JSON es una herramienta que toma datos JSON en bruto y los presenta de forma estructurada y legible. Las funciones básicas incluyen:</p>
+        <ul>
+          <li><strong>Formateo y sintaxis:</strong> Aplica sangría, colores y estructura de árbol para que el JSON sea fácil de leer.</li>
+          <li><strong>Validación:</strong> Detecta errores de sintaxis como comillas faltantes, comas mal colocadas o llaves desbalanceadas.</li>
+          <li><strong>Exploración interactiva:</strong> Permite expandir y colapsar objetos y arrays para navegar por estructuras de datos complejas.</li>
+        </ul>
+
+        <h2>¿Por qué los desarrolladores necesitan un visor JSON?</h2>
+        <p>Cuando trabajas con APIs REST, GraphQL o servicios web, constantemente recibes respuestas JSON que necesitas inspeccionar. Algunos escenarios comunes:</p>
+        <ul>
+          <li>Depurar la respuesta de una API para verificar que los datos son correctos</li>
+          <li>Analizar la estructura de un JSON complejo antes de escribir código para procesarlo</li>
+          <li>Extraer valores específicos de un JSON grande sin tener que revisarlo manualmente línea por línea</li>
+          <li>Compartir datos JSON formateados con otros miembros del equipo</li>
+        </ul>
+
+        <h2>Cómo usar un visor JSON online</h2>
+        <p>Usar un <a href="../tools/json-viewer" style="color:var(--green)">visor JSON online</a> es muy sencillo:</p>
+        <ol>
+          <li>Copia el JSON que quieres analizar (por ejemplo, la respuesta de una API).</li>
+          <li>Pégalo en el visor. La herramienta lo formatea automáticamente con colores y sangría.</li>
+          <li>Explora la estructura usando la vista de árbol: expande y colapsa objetos para navegar.</li>
+          <li>Si hay errores de sintaxis, el visor te indicará exactamente dónde está el problema.</li>
+        </ol>
+
+        <h2>Características que debería tener un buen visor JSON</h2>
+        <ul>
+          <li>Resaltado de sintaxis con colores para distinguir claves, valores, strings y números</li>
+          <li>Vista de árbol expandible y colapsable</li>
+          <li>Validación de JSON con mensajes de error claros</li>
+          <li>Soporte para JSON grande sin ralentizaciones</li>
+          <li>Procesamiento local: los datos no se envían a ningún servidor</li>
+        </ul>
+
+        <h2>Conclusión</h2>
+        <p>Un visor JSON es una herramienta esencial para cualquier desarrollador que trabaje con APIs o datos estructurados. Te ahorra tiempo, reduce errores y hace que el trabajo con JSON sea mucho más llevadero. Y al ser una herramienta que procesa todo localmente, tus datos nunca salen de tu dispositivo.</p>
+
+        <div style="margin-top:40px;padding:24px;background:var(--surface);border-radius:12px;border:1px solid var(--border);text-align:center">
+          <p style="margin-bottom:12px;font-weight:600">Prueba el visor JSON ahora:</p>
+          <a href="../tools/json-viewer" class="btn-primary" style="display:inline-block">Abrir visor JSON</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top:none; padding-top:0">
+        <a href="/" class="logo-pq" style="font-size:20px;">Pq</a>
+        <p style="color:var(--text-3); font-size:13px;">© 2026 Pq · <a href="../blog" style="color:var(--text-3)">Blog</a> · <a href="../legal/acerca" style="color:var(--text-3)">Acerca de</a> · <a href="../legal/contacto" style="color:var(--text-3)">Contacto</a> · <a href="../legal/privacidad" style="color:var(--text-3)">Privacidad</a> · <a href="../legal/terminos" style="color:var(--text-3)">Términos</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

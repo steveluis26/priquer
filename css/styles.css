@@ -1163,6 +1163,94 @@ button { cursor: pointer; font-family: var(--font-body); }
   .counter-grid { justify-content: center; }
 }
 
+/* BLOG */
+.blog-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.blog-card {
+  display: block;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.2s, background 0.2s;
+}
+.blog-card:hover {
+  border-color: var(--green);
+  background: var(--green-dark);
+}
+.blog-card-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--green);
+  margin-bottom: 8px;
+}
+.blog-card h2 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  letter-spacing: -0.3px;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+.blog-card p {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+.blog-card-meta {
+  font-size: 12px;
+  color: var(--text-3);
+}
+.blog-content {
+  max-width: 720px;
+}
+.blog-content h2 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  letter-spacing: -0.5px;
+  margin: 32px 0 12px;
+  color: var(--text);
+}
+.blog-content h2:first-of-type { margin-top: 0; }
+.blog-content p {
+  font-size: 15px;
+  color: var(--text-2);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+.blog-content ul, .blog-content ol {
+  margin: 0 0 16px 20px;
+  color: var(--text-2);
+  font-size: 15px;
+  line-height: 1.7;
+}
+.blog-content li { margin-bottom: 6px; }
+.blog-content strong { color: var(--text); }
+.blog-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0 24px;
+  font-size: 14px;
+}
+.blog-table th, .blog-table td {
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-2);
+}
+.blog-table th {
+  color: var(--text);
+  font-weight: 600;
+  background: var(--surface);
+}
+.blog-table tr:hover td { background: var(--surface); }
+
 @media (max-width: 600px) {
   .tools-grid { grid-template-columns: 1fr; }
   .footer-links { flex-direction: column; gap: 28px; }
